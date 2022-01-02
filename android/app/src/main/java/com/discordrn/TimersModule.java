@@ -1,4 +1,5 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -18,11 +19,11 @@ public class TimersModule extends ReactContextBaseJavaModule {
    }
 
    @ReactMethod
-   public void setTimeout() {}
+   public void setTimeout(Callback cb, int t) {}
    @ReactMethod
-   public void setInterval() {}
+   public void setInterval(Callback cb, int t) {}
    @ReactMethod
-   public void clearTimeout() {}
+   public void clearTimeout(int t) {}
 
    @Override
    public Map<String, Object> getConstants() {
