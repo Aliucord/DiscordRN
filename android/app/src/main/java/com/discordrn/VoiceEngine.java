@@ -54,7 +54,7 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     @ReactMethod
     public void pingVoiceThread() {}
     @ReactMethod
-    public String getAudioSubsystem() { return "standard"; }
+    public String getAudioSubsystem(double bruh) { return "standard"; }
     @ReactMethod
     public void watchdogTick() {}
     @ReactMethod
