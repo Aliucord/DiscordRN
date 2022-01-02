@@ -1,9 +1,11 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -18,23 +20,23 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setDeviceChangeCallback() {}
+    public void setDeviceChangeCallback(Callback cb) {}
     @ReactMethod
     public void handleDeviceChange() {}
     @ReactMethod
-    public void setVolumeChangeCallback() {}
+    public void setVolumeChangeCallback(Callback cb) {}
     @ReactMethod
     public void handleVolumeChange() {}
     @ReactMethod
-    public void setOnVoiceCallback() {}
+    public void setOnVoiceCallback(Callback cb) {}
     @ReactMethod
     public void handleVoiceActivity() {}
     @ReactMethod
-    public void setVideoInputInitializationCallback() {}
+    public void setVideoInputInitializationCallback(Callback cb) {}
     @ReactMethod
     public void handleVideoInputInitialization() {}
     @ReactMethod
-    public void setTransportOptions() {}
+    public void setTransportOptions(ReadableMap obj) {}
     @ReactMethod
     public void on() {}
     @ReactMethod
@@ -60,7 +62,7 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     @ReactMethod
     public void installedLogHooks() {}
     @ReactMethod
-    public void setActiveSinksChangeCallback() {}
+    public void setActiveSinksChangeCallback(Callback cb) {}
     @ReactMethod
     public void handleActiveSinksChange() {}
     @ReactMethod
@@ -76,17 +78,17 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     @ReactMethod
     public void createOwnStreamConnection() {}
     @ReactMethod
-    public void setNoInputCallback() {}
+    public void setNoInputCallback(Callback cb) {}
     @ReactMethod
-    public void setBroadcastRequestCallback() {}
+    public void setBroadcastRequestCallback(Callback cb) {}
     @ReactMethod
-    public void setBroadcastFinishedCallback() {}
+    public void setBroadcastFinishedCallback(Callback cb) {}
     @ReactMethod
-    public void setBroadcastAnnotatedCallback() {}
+    public void setBroadcastAnnotatedCallback(Callback cb) {}
     @ReactMethod
-    public void setBroadcastBlockedCallback() {}
+    public void setBroadcastBlockedCallback(Callback cb) {}
     @ReactMethod
-    public void setBroadcastThumbnailCallback() {}
+    public void setBroadcastThumbnailCallback(Callback cb) {}
     @ReactMethod
     public void prototype() {}
 
