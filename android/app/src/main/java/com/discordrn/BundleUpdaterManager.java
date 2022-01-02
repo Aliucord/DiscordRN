@@ -1,4 +1,5 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -20,7 +21,13 @@ public class BundleUpdaterManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void reload() {}
     @ReactMethod
-    public boolean getInitialBundleDownloaded() { return true; } // guessing this is bool
+    public void getInitialBundleDownloaded(Promise promise) { promise.resolve(new Object()); } // guessing this is bool
+    @ReactMethod
+    public void checkForUpdateAndReload() {}
+    @ReactMethod
+    public void addListener() {}
+    @ReactMethod
+    public void removeListeners() {}
 
     @Override
     public Map<String, Object> getConstants() {
