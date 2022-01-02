@@ -29,6 +29,7 @@ public class MainAppPackage implements ReactPackage {
        modules.add(new DCDDeviceManager(reactContext));
        modules.add(new TimersModule(reactContext));
        modules.add(new TTIManager(reactContext));
+       modules.add(new BundleUpdaterManager(reactContext));
 
        return modules;
    }
