@@ -50,7 +50,7 @@ public class PushNotificationAndroid extends ReactContextBaseJavaModule {
     @ReactMethod
     public void addEventListener(Callback cb) {}
     @ReactMethod
-    public void registerEventListener(Callback cb) {}
+    public void registerEventListener(String what) {}
 
     @Override
     public Map<String, Object> getConstants() {

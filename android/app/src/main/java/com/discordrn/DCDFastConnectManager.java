@@ -18,7 +18,7 @@ public class DCDFastConnectManager extends ReactContextBaseJavaModule {
    }
 
    @ReactMethod
-   public double setClientState(double state) { return 1.0; }
+   public void setClientState(String state) {}
 
    @Override
    public Map<String, Object> getConstants() {
