@@ -30,6 +30,7 @@ public class MainAppPackage implements ReactPackage {
        modules.add(new TimersModule(reactContext));
        modules.add(new TTIManager(reactContext));
        modules.add(new BundleUpdaterManager(reactContext));
+       modules.add(new PushNotificationAndroid(reactContext));
 
        return modules;
    }
