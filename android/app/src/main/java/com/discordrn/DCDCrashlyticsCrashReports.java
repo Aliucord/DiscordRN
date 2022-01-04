@@ -14,7 +14,7 @@ public class DCDCrashlyticsCrashReports extends ReactContextBaseJavaModule {
     @NonNull
     @Override
     public String getName() {
-        return "DCDCrashlyticsCrashReports";
+        return "CrashlyticsManager";
     }
 
     @ReactMethod
@@ -22,6 +22,6 @@ public class DCDCrashlyticsCrashReports extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getDidCrashDuringPreviousExecution() {
+    public void getDidCrashDuringPreviousExecution(Double a) {
     }
 }
