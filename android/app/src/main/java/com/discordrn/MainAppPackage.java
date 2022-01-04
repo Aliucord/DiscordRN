@@ -1,4 +1,7 @@
 package com.discordrn; // replace your-app-name with your app’s name
+
+import androidx.annotation.NonNull;
+
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -10,14 +13,15 @@ import java.util.List;
 
 public class MainAppPackage implements ReactPackage {
 
+   @NonNull
    @Override
-   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+   public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
        return Collections.emptyList();
    }
 
+   @NonNull
    @Override
-   public List<NativeModule> createNativeModules(
-           ReactApplicationContext reactContext) {
+   public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
        List<NativeModule> modules = new ArrayList<>();
 
        modules.add(new DCDFastConnectManager(reactContext));
@@ -32,6 +36,8 @@ public class MainAppPackage implements ReactPackage {
        modules.add(new BundleUpdaterManager(reactContext));
        modules.add(new PushNotificationAndroid(reactContext));
        modules.add(new ScreenshotHelper(reactContext));
+       modules.add(new DCDStrongboxManager(reactContext));
+       modules.add(new MMKVManager(reactContext));
 
        return modules;
    }
