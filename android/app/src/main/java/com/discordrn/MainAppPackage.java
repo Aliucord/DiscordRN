@@ -31,6 +31,7 @@ public class MainAppPackage implements ReactPackage {
        modules.add(new TTIManager(reactContext));
        modules.add(new BundleUpdaterManager(reactContext));
        modules.add(new PushNotificationAndroid(reactContext));
+       modules.add(new ScreenshotHelper(reactContext));
 
        return modules;
    }

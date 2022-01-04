@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@babel/core': ^7.16.7
   '@babel/runtime': ^7.16.7
+  '@react-native-async-storage/async-storage': ^1.15.14
   '@react-native-community/cli-platform-android': ^6.3.0
   '@react-native-community/eslint-config': ^2.0.0
   '@react-native-community/netinfo': git+https://git.catvibers.me/IHateHermes/react-native-netinfo.git#5.1.0
@@ -14,16 +15,17 @@ specifiers:
   react: 17.0.1
   react-native: 0.64.3
   react-native-gesture-handler: ^2.1.0
-  react-native-orientation: ^3.1.3
+  react-native-orientation: The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete
   react-test-renderer: 17.0.1
 
 dependencies:
+  '@react-native-async-storage/async-storage': 1.15.14_react-native@0.64.3
   '@react-native-community/cli-platform-android': 6.3.0
   '@react-native-community/netinfo': git.catvibers.me/IHateHermes/react-native-netinfo/5f904983545a954ad8de41308232da3c323a41b5_react-native@0.64.3
   react: 17.0.1
   react-native: 0.64.3_react@17.0.1
   react-native-gesture-handler: 2.1.0
-  react-native-orientation: 3.1.3_react-native@0.64.3
+  react-native-orientation: github.com/The1Central/react-native-orientation/62fc902821cf69e6416731ae4a952e4d05ab0491_react-native@0.64.3
 
 devDependencies:
   '@babel/core': 7.16.7
@@ -1127,6 +1129,15 @@ packages:
       '@types/node': 17.0.6
       '@types/yargs': 15.0.14
       chalk: 4.1.2
+
+  /@react-native-async-storage/async-storage/1.15.14_react-native@0.64.3:
+    resolution: {integrity: sha512-eJF2horabXazwszCyyXDe4w7sBSWlB0WPA8akKXuN2n7WXKHYeQJPN41lS9OahrhSZuZwqftNFE9VWgPXA8wyA==}
+    peerDependencies:
+      react-native: ^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0
+    dependencies:
+      merge-options: 3.0.4
+      react-native: 0.64.3_react@17.0.1
+    dev: false
 
   /@react-native-community/cli-debugger-ui/5.0.1:
     resolution: {integrity: sha512-5gGKaaXYOVE423BUqxIfvfAVSj5Cg1cU/TpGbeg/iqpy2CfqyWqJB3tTuVUbOOiOvR5wbU8tti6pIi1pchJ+oA==}
@@ -3494,6 +3505,11 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
 
+  /is-plain-obj/2.1.0:
+    resolution: {integrity: sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==}
+    engines: {node: '>=8'}
+    dev: false
+
   /is-plain-object/2.0.4:
     resolution: {integrity: sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og==}
     engines: {node: '>=0.10.0'}
@@ -4353,6 +4369,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       object-visit: 1.0.1
+
+  /merge-options/3.0.4:
+    resolution: {integrity: sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      is-plain-obj: 2.1.0
+    dev: false
 
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -5243,14 +5266,6 @@ packages:
       invariant: 2.2.4
       lodash: 4.17.21
       prop-types: 15.8.0
-    dev: false
-
-  /react-native-orientation/3.1.3_react-native@0.64.3:
-    resolution: {integrity: sha512-A0h0E+2f95X4avmhaBG1ZT8WDxBACA/q//JN2eF1E7kq8AJVxt5XDiavv+aSBkBlqFsfF3bIS+T/DB5mXmnxuA==}
-    peerDependencies:
-      react-native: '>=0.40'
-    dependencies:
-      react-native: 0.64.3_react@17.0.1
     dev: false
 
   /react-native/0.64.3_react@17.0.1:
@@ -6532,6 +6547,17 @@ packages:
     requiresBuild: true
     peerDependencies:
       react-native: '>=0.59'
+    dependencies:
+      react-native: 0.64.3_react@17.0.1
+    dev: false
+
+  github.com/The1Central/react-native-orientation/62fc902821cf69e6416731ae4a952e4d05ab0491_react-native@0.64.3:
+    resolution: {tarball: https://codeload.github.com/The1Central/react-native-orientation/tar.gz/62fc902821cf69e6416731ae4a952e4d05ab0491}
+    id: github.com/The1Central/react-native-orientation/62fc902821cf69e6416731ae4a952e4d05ab0491
+    name: react-native-orientation
+    version: 3.1.3
+    peerDependencies:
+      react-native: '>=0.40'
     dependencies:
       react-native: 0.64.3_react@17.0.1
     dev: false
