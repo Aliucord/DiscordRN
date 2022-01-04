@@ -144,11 +144,11 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setInputDevice(int index) {
+    public void setInputDevice(String index) {
     }
 
     @ReactMethod
-    public void setOutputDevice(int index) {
+    public void setOutputDevice(String index) {
     }
 
     @ReactMethod
