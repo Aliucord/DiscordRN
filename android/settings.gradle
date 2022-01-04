@@ -1,4 +1,6 @@
 rootProject.name = 'DiscordRN'
+include ':@react-native-async-storage_async-storage'
+project(':@react-native-async-storage_async-storage').projectDir = new File(rootProject.projectDir, '../node_modules/.pnpm/@react-native-async-storage+async-storage@1.15.14_react-native@0.64.3/node_modules/@react-native-async-storage/async-storage/android')
 include ':react-native-orientation'
 project(':react-native-orientation').projectDir = new File(rootProject.projectDir, '../node_modules/.pnpm/react-native-orientation@3.1.3_react-native@0.64.3/node_modules/react-native-orientation/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
