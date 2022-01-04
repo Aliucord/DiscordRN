@@ -36,8 +36,8 @@ public class MainAppPackage implements ReactPackage {
        modules.add(new BundleUpdaterManager(reactContext));
        modules.add(new PushNotificationAndroid(reactContext));
        modules.add(new ScreenshotHelper(reactContext));
-       modules.add(new DCDStrongboxManager(reactContext));
-       modules.add(new MMKVManager(reactContext));
+       modules.add(new MMKVManager(reactContext, "DCDStrongboxManager"));
+       modules.add(new MMKVManager(reactContext, "MMKVManager"));
        modules.add(new DCDColor(reactContext));
        modules.add(new DCDIconManager(reactContext));
        modules.add(new DynamicLinkManager(reactContext));

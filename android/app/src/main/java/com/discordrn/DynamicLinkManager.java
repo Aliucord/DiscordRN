@@ -16,7 +16,7 @@ public class DynamicLinkManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public String getInitialURL() {
-        return "https://discord.com/";
+    public void getInitialURL(Promise promise) {
+        promise.resolve(null);
     }
 }

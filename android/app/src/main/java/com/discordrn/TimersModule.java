@@ -1,12 +1,15 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
+import android.os.Handler;
+
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import java.util.Map;
-import java.util.HashMap;
+import com.facebook.react.modules.core.TimingModule;
+
+import java.util.*;
 
 public class TimersModule extends ReactContextBaseJavaModule {
     TimersModule(ReactApplicationContext context) {
@@ -19,9 +22,18 @@ public class TimersModule extends ReactContextBaseJavaModule {
    }
 
    @ReactMethod
-   public void setTimeout(Callback cb, int t) {}
+   public void setTimeout(Callback cb, int t) {
+        new Handler().postDelayed(cb::invoke, t);
+   }
    @ReactMethod
-   public void setInterval(Callback cb, int t) {}
+   public void setInterval(Callback cb, int t) {
+       new Timer().scheduleAtFixedRate(new TimerTask() {
+          @Override
+          public void run() {
+             cb.invoke();
+          }
+       }, 0, t);
+   }
    @ReactMethod
    public void clearTimeout(int t) {}
 
