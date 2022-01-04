@@ -1,4 +1,5 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
+
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -6,6 +7,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -20,77 +22,142 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setDeviceChangeCallback(Callback cb) {}
+    public void setDeviceChangeCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void handleDeviceChange() {}
+    public void handleDeviceChange() {
+    }
+
     @ReactMethod
-    public void setVolumeChangeCallback(Callback cb) {}
+    public void setVolumeChangeCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void handleVolumeChange() {}
+    public void handleVolumeChange() {
+    }
+
     @ReactMethod
-    public void setOnVoiceCallback(Callback cb) {}
+    public void setOnVoiceCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void handleVoiceActivity() {}
+    public void handleVoiceActivity() {
+    }
+
     @ReactMethod
-    public void setVideoInputInitializationCallback(Callback cb) {}
+    public void setVideoInputInitializationCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void handleVideoInputInitialization() {}
+    public void handleVideoInputInitialization() {
+    }
+
     @ReactMethod
-    public void setTransportOptions(ReadableMap obj) {}
+    public void setTransportOptions(ReadableMap obj) {
+    }
+
     @ReactMethod
-    public void on() {}
+    public String getVoiceEngine() {
+        return "ok";
+    }
+
     @ReactMethod
-    public void removeListener() {}
+    public void getUseLegacyAudioDevice() {
+    }
+
     @ReactMethod
-    public void handleNewListener() {}
+    public void pingVoiceThread() {
+    }
+
     @ReactMethod
-    public void newListener() {}
+    public String getAudioSubsystem(double bruh) {
+        return "standard";
+    }
+
     @ReactMethod
-    public String getVoiceEngine() { return "ok"; }
+    public void watchdogTick() {
+    }
+
     @ReactMethod
-    public void getUseLegacyAudioDevice() {}
+    public void getDebugLogging() {
+    }
+
     @ReactMethod
-    public void AudioSubsystems() {}
+    public void installedLogHooks() {
+    }
+
     @ReactMethod
-    public void pingVoiceThread() {}
+    public void setActiveSinksChangeCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public String getAudioSubsystem(double bruh) { return "standard"; }
+    public void handleActiveSinksChange() {
+    }
+
     @ReactMethod
-    public void watchdogTick() {}
+    public void init() {
+    }
+
     @ReactMethod
-    public void getDebugLogging() {}
+    public void createVoiceConnection() {
+    }
+
     @ReactMethod
-    public void installedLogHooks() {}
+    public void createOwnStreamConnection() {
+    }
+
     @ReactMethod
-    public void setActiveSinksChangeCallback(Callback cb) {}
+    public void setNoInputCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void handleActiveSinksChange() {}
+    public void setBroadcastRequestCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void call() {}
+    public void setBroadcastFinishedCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void Video() {}
+    public void setBroadcastAnnotatedCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void Camera() {}
+    public void setBroadcastBlockedCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void init() {}
+    public void setBroadcastThumbnailCallback(Callback cb) {
+    }
+
     @ReactMethod
-    public void createVoiceConnection() {}
+    public void getInputDevices(Callback cb) {
+    }
+
     @ReactMethod
-    public void createOwnStreamConnection() {}
+    public void getOutputDevices(Callback cb) {
+    }
+
     @ReactMethod
-    public void setNoInputCallback(Callback cb) {}
+    public void getVideoInputDevices(Callback cb) {
+    }
+
     @ReactMethod
-    public void setBroadcastRequestCallback(Callback cb) {}
+    public void setInputDevice(int index) {
+    }
+
     @ReactMethod
-    public void setBroadcastFinishedCallback(Callback cb) {}
+    public void setOutputDevice(int index) {
+    }
+
     @ReactMethod
-    public void setBroadcastAnnotatedCallback(Callback cb) {}
+    public void setInputVolume(int volume) {
+    }
+
     @ReactMethod
-    public void setBroadcastBlockedCallback(Callback cb) {}
-    @ReactMethod
-    public void setBroadcastThumbnailCallback(Callback cb) {}
-    @ReactMethod
-    public void prototype() {}
+    public void setOutputVolume(int volume) {
+    }
 
     @Override
     public Map<String, Object> getConstants() {
