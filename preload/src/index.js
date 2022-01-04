@@ -1,5 +1,9 @@
+import driver from "./driver";
+
 const loggerId = 13;
 const promiseId = 111;
+const nativeModulesId = 41;
+const localForageId = 892;
 
 globalThis = new Proxy(
     globalThis,
@@ -7,7 +11,7 @@ globalThis = new Proxy(
         set: function (obj, prop, value) {
             if (prop === "__d") {
                 obj[prop] = function (factory, moduleId, dependencyMap) {
-                    if (moduleId === loggerId || moduleId == promiseId) {
+                    if (moduleId === loggerId || moduleId == promiseId || moduleId == localForageId) {
                         const _factory = factory;
                         factory = function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
                             const ret = _factory(global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap);
@@ -34,6 +38,17 @@ globalThis = new Proxy(
                                         }
                                     }]);
                                 }
+                            } else if (moduleId == localForageId) {
+                                driver.AsyncStorage = _$$_REQUIRE(nativeModulesId).RNC_AsyncSQLiteDBStorage;
+                                const _driver = driver.driverWithoutSerialization();
+                                module.exports.defineDriver(_driver).then(() => module.exports.setDriver(_driver._driver));
+
+                                module.exports.__proto__.getDriver = function getDriver(t, n, o) {
+                                    const d = Promise.resolve(_driver);
+                                    typeof n == "function" && d.then(n);
+                                    typeof o == "function" && d.catch(o);
+                                    return d;
+                                };
                             }
 
                             return ret;

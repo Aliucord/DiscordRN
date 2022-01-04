@@ -58,3 +58,5 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+android/app/src/main/assets/preload.js
