@@ -50,7 +50,6 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setVideoInputInitializationCallback(Callback cb) {
-        cb.invoke();
     }
 
     @ReactMethod
