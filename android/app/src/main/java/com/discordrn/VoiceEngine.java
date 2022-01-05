@@ -1,5 +1,6 @@
 package com.discordrn; // replace com.your-app-name with your app’s name
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -7,6 +8,8 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -133,14 +136,29 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getInputDevices(Callback cb) {
+        WritableArray devices = Arguments.createArray();
+        WritableMap dev = Arguments.createMap();
+        dev.putString("name", "bruh");
+        devices.pushMap(dev);
+        cb.invoke(devices);
     }
 
     @ReactMethod
     public void getOutputDevices(Callback cb) {
+        WritableArray devices = Arguments.createArray();
+        WritableMap dev = Arguments.createMap();
+        dev.putString("name", "bruh");
+        devices.pushMap(dev);
+        cb.invoke(devices);
     }
 
     @ReactMethod
     public void getVideoInputDevices(Callback cb) {
+        WritableArray devices = Arguments.createArray();
+        WritableMap dev = Arguments.createMap();
+        dev.putString("name", "bruh");
+        devices.pushMap(dev);
+        cb.invoke(devices);
     }
 
     @ReactMethod
