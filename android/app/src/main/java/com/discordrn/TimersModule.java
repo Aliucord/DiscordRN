@@ -30,7 +30,7 @@ public class TimersModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setTimeout(Callback callback, int delay) {
+    public void setTimeout(int delay, Callback callback) {
         Log.i(TAG, "setTimeout: " + delay);
         new Handler().postDelayed(callback::invoke, delay);
     }
