@@ -50,6 +50,7 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setVideoInputInitializationCallback(Callback cb) {
+        cb.invoke();
     }
 
     @ReactMethod
@@ -74,8 +75,8 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public String getAudioSubsystem(double bruh) {
-        return "standard";
+    public void getAudioSubsystem(Callback bruh) {
+        bruh.invoke("standard");
     }
 
     @ReactMethod
@@ -175,6 +176,9 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setOutputVolume(int volume) {
+    }
+
+    public void setEmitVADLevel(int level) {
     }
 
     @Override
