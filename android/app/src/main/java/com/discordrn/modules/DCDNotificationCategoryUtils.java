@@ -1,4 +1,4 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
@@ -8,7 +8,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 
 public class DCDNotificationCategoryUtils extends ReactContextBaseJavaModule {
-    DCDNotificationCategoryUtils(ReactApplicationContext context) {
+    public DCDNotificationCategoryUtils(ReactApplicationContext context) {
         super(context);
     }
 

@@ -1,4 +1,4 @@
-package com.discordrn; // replace com.your-app-name with your app’s name
+package com.discordrn.modules;
 
 import android.os.Handler;
 import android.util.Log;
@@ -19,7 +19,7 @@ import java.util.TimerTask;
 public class TimersModule extends ReactContextBaseJavaModule {
     private static final String TAG = "TimersModule";
 
-    TimersModule(ReactApplicationContext context) {
+    public TimersModule(ReactApplicationContext context) {
         super(context);
     }
 
@@ -42,7 +42,7 @@ public class TimersModule extends ReactContextBaseJavaModule {
             @Override
             public void run() {
                 WritableMap map = Arguments.createMap();
-                map.putInt("id", 69); // TODO
+                map.putInt("id", 0);
 
                 getReactApplicationContext()
                         .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
@@ -54,5 +54,6 @@ public class TimersModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void clearTimeout(int id) {
         Log.i(TAG, "clearTimeout: " + id);
+        throw new UnsupportedOperationException();
     }
 }

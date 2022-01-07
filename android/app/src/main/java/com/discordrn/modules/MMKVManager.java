@@ -1,4 +1,4 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -47,7 +47,7 @@ public class MMKVManager extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void clear(ReadableArray keys, Promise promise) {
-        Log.i(TAG, String.format("clear"));
+        Log.i(TAG, "clear");
         SharedPreferences.Editor editor = prefs.edit();
         for (int i = 0, j = keys.size(); i < j; i++) {
             editor.remove(keys.getString(i));

@@ -1,17 +1,19 @@
-package com.discordrn; // replace com.your-app-name with your app’s name
-import com.facebook.react.bridge.NativeModule;
+package com.discordrn.modules;
+
+import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import java.util.Map;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class InfoDictionaryManager extends ReactContextBaseJavaModule {
-    InfoDictionaryManager(ReactApplicationContext context) {
+    public InfoDictionaryManager(ReactApplicationContext context) {
         super(context);
     }
 
+    @NonNull
     @Override
     public String getName() {
         return "InfoDictionaryManager";
@@ -22,6 +24,7 @@ public class InfoDictionaryManager extends ReactContextBaseJavaModule {
         final Map<String, Object> constants = new HashMap<>();
         constants.put("SentryDsn", "");
         constants.put("UserSettings", "{\"systemTheme\": \"DARK\", \"useSystemTheme\": true}");
+        constants.put("Manifest", "[]");
         return constants;
     }
 }

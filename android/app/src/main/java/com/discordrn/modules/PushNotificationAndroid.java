@@ -1,4 +1,4 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
@@ -9,7 +9,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class PushNotificationAndroid extends ReactContextBaseJavaModule {
-    PushNotificationAndroid(ReactApplicationContext context) {
+    public PushNotificationAndroid(ReactApplicationContext context) {
         super(context);
     }
 
@@ -87,7 +87,6 @@ public class PushNotificationAndroid extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void appStateChanged(String what) {
+    public void appStateChanged(String appState) {
     }
-
 }

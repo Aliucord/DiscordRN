@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 import com.facebook.debug.debugoverlay.model.DebugOverlayTag;
 import com.facebook.debug.holder.Printer;
 import com.facebook.debug.holder.PrinterHolder;
@@ -27,7 +25,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
-
     private final ReactNativeHost mReactNativeHost =
             new ReactNativeHost(this) {
                 @Override
@@ -37,10 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
 
                 @Override
                 protected List<ReactPackage> getPackages() {
-                    @SuppressWarnings("UnnecessaryLocalVariable")
                     List<ReactPackage> packages = new PackageList(this).getPackages();
-                    // Packages that cannot be autolinked yet can be added manually here, for example:
-                    // packages.add(new MyReactNativePackage());
                     packages.add(new MainAppPackage());
                     return packages;
                 }
@@ -100,17 +94,17 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        SoLoader.init(this, /* native exopackage */ false);
+        SoLoader.init(this, false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         PrinterHolder.setPrinter(new Printer() {
             @Override
             public void logMessage(DebugOverlayTag tag, String message, Object... args) {
-                Log.d("Printer", String.format("[%s] %s", tag.name, String.format(message, args)));
+                Log.v("Printer", String.format("[%s] %s", tag.name, String.format(message, args)));
             }
 
             @Override
             public void logMessage(DebugOverlayTag tag, String message) {
-                Log.d("Printer", String.format("[%s] %s", tag.name, message));
+                Log.v("Printer", String.format("[%s] %s", tag.name, message));
             }
 
             @Override
@@ -120,32 +114,13 @@ public class MainApplication extends Application implements ReactApplication {
         });
     }
 
-    /**
-     * Loads Flipper in React Native templates. Call this in the onCreate method with something like
-     * initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-     *
-     * @param context
-     * @param reactInstanceManager
-     */
-    private static void initializeFlipper(
-            Context context, ReactInstanceManager reactInstanceManager) {
+    private static void initializeFlipper(Context context, ReactInstanceManager reactInstanceManager) {
         if (BuildConfig.DEBUG) {
             try {
-        /*
-         We use reflection here to pick up the class that initializes Flipper,
-        since Flipper library is not available in release mode
-        */
-                Class<?> aClass = Class.forName("com.discordrn.ReactNativeFlipper");
-                aClass
+                Class.forName("com.discordrn.ReactNativeFlipper")
                         .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
                         .invoke(null, context, reactInstanceManager);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }

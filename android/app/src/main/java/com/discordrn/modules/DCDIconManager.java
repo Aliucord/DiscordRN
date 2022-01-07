@@ -1,11 +1,11 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.*;
 
 public class DCDIconManager extends ReactContextBaseJavaModule {
-    DCDIconManager(ReactApplicationContext context) {
+    public DCDIconManager(ReactApplicationContext context) {
         super(context);
     }
 
@@ -16,5 +16,6 @@ public class DCDIconManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setHosts(String cdn, String api) {}
+    public void setHosts(String cdn, String api) {
+    }
 }

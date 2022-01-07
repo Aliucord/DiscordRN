@@ -1,13 +1,14 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 public class DCDCrashlyticsCrashReports extends ReactContextBaseJavaModule {
-    DCDCrashlyticsCrashReports(ReactApplicationContext context) {
+    public DCDCrashlyticsCrashReports(ReactApplicationContext context) {
         super(context);
     }
 
@@ -22,6 +23,7 @@ public class DCDCrashlyticsCrashReports extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getDidCrashDuringPreviousExecution(Double a) {
+    public void getDidCrashDuringPreviousExecution(Callback callback) {
+        callback.invoke(false);
     }
 }

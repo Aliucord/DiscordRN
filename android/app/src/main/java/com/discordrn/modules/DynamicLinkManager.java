@@ -1,11 +1,11 @@
-package com.discordrn;
+package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.*;
 
 public class DynamicLinkManager extends ReactContextBaseJavaModule {
-    DynamicLinkManager(ReactApplicationContext context) {
+    public DynamicLinkManager(ReactApplicationContext context) {
         super(context);
     }
 

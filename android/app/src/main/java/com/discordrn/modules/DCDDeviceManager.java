@@ -1,17 +1,19 @@
-package com.discordrn; // replace com.your-app-name with your app’s name
-import com.facebook.react.bridge.NativeModule;
+package com.discordrn.modules;
+
+import androidx.annotation.NonNull;
+
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-import java.util.Map;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class DCDDeviceManager extends ReactContextBaseJavaModule {
-    DCDDeviceManager(ReactApplicationContext context) {
+    public DCDDeviceManager(ReactApplicationContext context) {
         super(context);
     }
 
+    @NonNull
     @Override
     public String getName() {
         return "DCDDeviceManager";
@@ -20,9 +22,11 @@ public class DCDDeviceManager extends ReactContextBaseJavaModule {
     @Override
     public Map<String, Object> getConstants() {
         final Map<String, Object> constants = new HashMap<>();
-        constants.put("SMALL_SCREEN_WIDTH", "100");
-        constants.put("systemVersion", "{\"os_version\": \"12\"}");
-        constants.put("device", "");
+        constants.put("name", "Totally not an emulator");
+        constants.put("systemVersion", "12");
+        // TODO figure out what these would be for android
+        constants.put("device", "iPad8,6");
+        constants.put("model", "iPad");
         return constants;
     }
 }
