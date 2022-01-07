@@ -8,6 +8,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableMap;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class VoiceEngine extends ReactContextBaseJavaModule {
     public VoiceEngine(ReactApplicationContext context) {
@@ -89,5 +93,16 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setEmitVADLevel(int level) {
+    }
+
+    @Override
+    public Map<String, Object> getConstants() {
+        final Map<String, Object> constants = new HashMap<>();
+        final WritableMap modes = Arguments.createMap();
+        modes.putInt("VOICE", 0);
+        modes.putInt("LISTEN", 1);
+        modes.putInt("VIDEO", 2);
+        constants.put("AVAudioSessionMode", modes);
+        return constants;
     }
 }

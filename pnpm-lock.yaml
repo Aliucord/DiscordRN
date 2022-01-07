@@ -14,6 +14,7 @@ specifiers:
   metro-react-native-babel-preset: ^0.64.0
   react: 17.0.1
   react-native: 0.64.3
+  react-native-adjust: ^4.29.5
   react-native-gesture-handler: ^1.10.3
   react-native-orientation: The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete
   react-native-reanimated: ^1.13
@@ -25,6 +26,7 @@ dependencies:
   '@react-native-community/netinfo': git.catvibers.me/IHateHermes/react-native-netinfo/5f904983545a954ad8de41308232da3c323a41b5_react-native@0.64.3
   react: 17.0.1
   react-native: 0.64.3_react@17.0.1
+  react-native-adjust: 4.29.5
   react-native-gesture-handler: 1.10.3
   react-native-orientation: github.com/The1Central/react-native-orientation/62fc902821cf69e6416731ae4a952e4d05ab0491_react-native@0.64.3
   react-native-reanimated: 1.13.3_react-native@0.64.3+react@17.0.1
@@ -5327,6 +5329,10 @@ packages:
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
+
+  /react-native-adjust/4.29.5:
+    resolution: {integrity: sha512-dZaPSAzyb/Oyi+GZFFV5juD9mpcRLL+5L2Bk8E7jM4sBut2Yu2e6R2hN/bVlgImLPs5sM8g5oHMaVDcq4EhF1g==}
+    dev: false
 
   /react-native-codegen/0.0.6:
     resolution: {integrity: sha512-cMvrUelD81wiPitEPiwE/TCNscIVauXxmt4NTGcy18HrUd0WRWXfYzAQGXm0eI87u3NMudNhqFj2NISJenxQHg==}

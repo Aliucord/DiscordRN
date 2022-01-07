@@ -3,6 +3,7 @@ package com.discordrn;
 import androidx.annotation.NonNull;
 
 import com.discordrn.modules.*;
+import com.discordrn.views.*;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -16,7 +17,11 @@ public class MainAppPackage implements ReactPackage {
     @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List <ViewManager> views = new ArrayList<>();
+
+        views.add(new KeyCommandsView(reactContext));
+        
+        return views;
     }
 
     @NonNull
@@ -24,7 +29,6 @@ public class MainAppPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
-        modules.add(new Adjust(reactContext));
         modules.add(new BundleUpdaterManager(reactContext));
         modules.add(new DCDColor(reactContext));
         modules.add(new DCDCrashlyticsCrashReports(reactContext));
@@ -37,6 +41,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new DynamicLinkManager(reactContext));
         modules.add(new ExpoRandom(reactContext));
         modules.add(new InfoDictionaryManager(reactContext));
+        modules.add(new KeyCommandsModule(reactContext));
         modules.add(new MMKVManager(reactContext, "DCDStrongboxManager"));
         modules.add(new MMKVManager(reactContext, "MMKVManager"));
         modules.add(new NativePermissionManager(reactContext));
