@@ -20,4 +20,16 @@ public class ScreenshotHelper extends ReactContextBaseJavaModule {
     @ReactMethod
     public void appStateChanged(Boolean isActive) {
     }
+
+    @ReactMethod
+    public void addListener(String name) {
+    }
+
+    @ReactMethod
+    public void removeListener(String name) {
+    }
+
+    @ReactMethod
+    public void removeEventListener(String name) {
+    }
 }

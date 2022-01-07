@@ -54,6 +54,12 @@ public class TimersModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void clearTimeout(int id) {
         Log.i(TAG, "clearTimeout: " + id);
-        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
+    }
+
+    @ReactMethod
+    public void clearInterval(int id) {
+        Log.i(TAG, "clearInterval: " + id);
+        // throw new UnsupportedOperationException();
     }
 }

@@ -53,6 +53,11 @@ public class NativePermissionManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public boolean hasPhotoAuthorization() {
+        return true;
+    }
+
+    @ReactMethod
     public boolean hasPermissionLookup() {
         return true;
     }
