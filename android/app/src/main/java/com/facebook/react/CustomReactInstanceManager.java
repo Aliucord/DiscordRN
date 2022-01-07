@@ -75,7 +75,7 @@ public class CustomReactInstanceManager extends ReactInstanceManager {
     }
 
     public static class DevSupportManagerWrapper implements DevSupportManager {
-        private static final String TAG = "DevSupportManagerWrapper";
+        private static final String TAG = "DevSupportManager";
 
         private final DevSupportManager wrapped;
 
