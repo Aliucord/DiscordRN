@@ -29,18 +29,16 @@ globalThis = new Proxy(
                                     return logger;
                                 }
                             } else if (moduleId == promiseId) {
-                                const timeoutModule = _$$_REQUIRE(nativeModulesId).TimersModule
                                 const _then = module.exports.prototype.then;
                                 module.exports.prototype.then = function (onFulfilled, onRejected) {
                                     let isDone = false;
-                                    const stack = (new Error()).stack;
-                                    timeoutModule.setTimeout(10000, () => {
+                                    const stack = (new Error("PROMISE TIMEOUT")).stack;
+                                    setTimeout(() => {
                                         if (!isDone) {
-                                            console.log("PROMISE TIMEOUT");
                                             console.log(stack);
                                         }
-                                    });
-                                    _then.apply(this, [() => {isDone = true}, () => {isDone = true}]);
+                                    }, 10000);
+                                    _then.apply(this, [() => { isDone = true }, () => { isDone = true }]);
                                     return _then.apply(this, [onFulfilled, reason => {
                                         isDone = true;
                                         console[onRejected ? "warn" : "error"]("Promise errored: " + reason.stack)
@@ -73,6 +71,6 @@ globalThis = new Proxy(
             }
 
             return true;
-        }
+        },
     },
 );
