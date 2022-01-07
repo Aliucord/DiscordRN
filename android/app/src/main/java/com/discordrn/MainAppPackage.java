@@ -10,18 +10,24 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainAppPackage implements ReactPackage {
     @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-        List <ViewManager> views = new ArrayList<>();
+        List<ViewManager> views = new ArrayList<>();
 
-        views.add(new DCDSafeArea(reactContext));
-        views.add(new KeyCommandsView(reactContext));
-        
+        views.add(new ViewStub("DCDSafeArea"));
+        views.add(new ViewStub("KeyCommandsView"));
+        views.add(new ViewStub("RNSScreen"));
+        views.add(new ViewStub("RNSScreenContainer"));
+        views.add(new ViewStub("RNSScreenStack"));
+        views.add(new ViewStub("RNSScreenStackHeaderConfig"));
+        views.add(new ViewStub("RNSScreenStackHeaderSubview"));
+        views.add(new ViewStub("RNSSearchBar"));
+        views.add(new ViewStub("RNCSafeAreaProvider"));
+
         return views;
     }
 
