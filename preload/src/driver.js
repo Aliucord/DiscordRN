@@ -9,7 +9,7 @@
  *  structures of both implementations.
  */
 
-let AsyncStorage;
+export let AsyncStorage;
 
 async function _withCallback(callback, promise) {
     try {
@@ -317,7 +317,7 @@ const defaultDriver = {
 
 };
 
-function driverWithSerialization(serializer) {
+export function driverWithSerialization(serializer) {
     const driver = Object.assign({}, defaultDriver, {
         _driver: `${defaultDriver._driver}-with${serializer === undefined ? 'DefaultSerializer' : (serializer === null ? 'outSerializer' : 'Serializer')}`,
     });
@@ -330,12 +330,6 @@ function driverWithSerialization(serializer) {
     return driver;
 }
 
-function driverWithoutSerialization() {
+export function driverWithoutSerialization() {
     return driverWithSerialization(null);
-}
-
-module.exports = {
-    driverWithoutSerialization,
-    driverWithSerialization,
-    AsyncStorage
 }

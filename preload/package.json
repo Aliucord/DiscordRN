@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
     "esbuild": "^0.14.10",
     "rollup": "^2.63.0",
-    "rollup-plugin-esbuild": "^4.8.2"
+    "rollup-plugin-esbuild": "^4.8.2",
+    "rollup-plugin-string": "^3.0.0"
+  },
+  "dependencies": {
+    "react-devtools-core": "^4.22.1"
   }
 }

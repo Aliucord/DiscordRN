@@ -1,6 +1,6 @@
 import { defineConfig } from "rollup";
-import commonjs from "@rollup/plugin-commonjs";
 import esbuild from "rollup-plugin-esbuild";
+import { string } from "rollup-plugin-string";
 
 export default defineConfig({
     input: "src/index.js",
@@ -8,7 +8,9 @@ export default defineConfig({
         { file: "../android/app/src/main/assets/preload.js", format: "cjs" }
     ],
     plugins: [
-        commonjs(),
+        string({
+            include: "**/*.txt"
+        }),
         esbuild({ target: "es2015" })
     ]
 });

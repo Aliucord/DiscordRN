@@ -1,9 +1,15 @@
-import driver from "./driver";
+import * as driver from "./driver";
+import reactDevToolsCode from "./react-devtools-core.txt";
 
 const loggerId = 13;
 const promiseId = 111;
 const nativeModulesId = 41;
 const localForageId = 892;
+const setUpBatchedBridgeId = 152;
+
+const appStateId = 415;
+const viewConfigId = 183;
+const flattenStyleId = 164;
 
 globalThis = new Proxy(
     globalThis,
@@ -11,7 +17,7 @@ globalThis = new Proxy(
         set: function (obj, prop, value) {
             if (prop === "__d") {
                 obj[prop] = function (factory, moduleId, dependencyMap) {
-                    if (moduleId === loggerId || moduleId == promiseId || moduleId == localForageId) {
+                    if (moduleId === loggerId || moduleId == promiseId || moduleId == localForageId || moduleId == setUpBatchedBridgeId) {
                         const _factory = factory;
                         factory = function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
                             const ret = _factory(global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap);
@@ -58,6 +64,36 @@ globalThis = new Proxy(
                                     typeof o == "function" && d.catch(o);
                                     return d;
                                 };
+                            } else if (moduleId == setUpBatchedBridgeId) {
+                                (0, eval)(reactDevToolsCode);
+                                const reactDevTools = require_react_devtools_core();
+
+                                function setUpReactDevTools() {
+                                    const AppState = _$$_REQUIRE(appStateId);
+                                    const isAppActive = () => AppState.currentState !== "background";
+
+                                    const ws = new WebSocket("ws://localhost:8097");
+                                    ws.addEventListener("close", function (event) {
+                                        console.log("Devtools connection closed: " + event.message);
+                                    });
+
+                                    const viewConfig = _$$_REQUIRE(viewConfigId);
+                                    const { flattenStyle } = _$$_REQUIRE(flattenStyleId);
+                                    console.log("Connecting to devtools");
+                                    reactDevTools.connectToDevTools({
+                                        isAppActive,
+                                        resolveRNStyle: flattenStyle,
+                                        nativeStyleEditorValidAttributes: viewConfig.validAttributes.style ? Object.keys(
+                                            viewConfig.validAttributes.style,
+                                        ) : undefined,
+                                        websocket: ws
+                                    });
+                                }
+
+                                setUpReactDevTools();
+
+                                const { NativeAppEventEmitter } = _$$_REQUIRE(17);
+                                NativeAppEventEmitter.addListener("RCTDevMenuShown", setUpReactDevTools);
                             }
 
                             return ret;
