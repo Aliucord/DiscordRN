@@ -5,19 +5,19 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
+import com.facebook.common.logging.FLog;
 import com.facebook.debug.debugoverlay.model.DebugOverlayTag;
 import com.facebook.debug.holder.Printer;
 import com.facebook.debug.holder.PrinterHolder;
+import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
+import com.facebook.react.CustomReactInstanceManager;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactInstanceManagerBuilder;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.JSBundleLoaderDelegate;
-import com.facebook.react.bridge.ReactMarker;
-import com.facebook.react.bridge.ReactMarkerConstants;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.soloader.SoLoader;
 
@@ -51,38 +51,38 @@ public class MainApplication extends Application implements ReactApplication {
 
                 @Override
                 protected ReactInstanceManager createReactInstanceManager() {
-                    ReactMarker.logMarker(ReactMarkerConstants.BUILD_REACT_INSTANCE_MANAGER_START);
-                    ReactInstanceManagerBuilder builder =
-                            ReactInstanceManager.builder()
-                                    .setApplication(getApplication())
-                                    .setJSMainModulePath(getJSMainModuleName())
-                                    .setUseDeveloperSupport(getUseDeveloperSupport())
-                                    .setRedBoxHandler(getRedBoxHandler())
-                                    .setJavaScriptExecutorFactory(getJavaScriptExecutorFactory())
-                                    .setUIImplementationProvider(getUIImplementationProvider())
-                                    .setJSIModulesPackage(getJSIModulePackage())
-                                    .setInitialLifecycleState(LifecycleState.BEFORE_CREATE);
+                    return new CustomReactInstanceManager(
+                            getApplication(),
+                            null,
+                            null,
+                            new HermesExecutorFactory(),
+                            new JSBundleLoader() {
+                                @Override
+                                public String loadScript(JSBundleLoaderDelegate delegate) {
+                                    AssetManager assetManager = getApplicationContext().getAssets();
 
-                    for (ReactPackage reactPackage : getPackages()) {
-                        builder.addPackage(reactPackage);
-                    }
+                                    delegate.loadScriptFromAssets(assetManager, "assets://preload.js", true);
 
-                    builder.setJSBundleLoader(new JSBundleLoader() {
-                        @Override
-                        public String loadScript(JSBundleLoaderDelegate delegate) {
-                            AssetManager assetManager = getApplicationContext().getAssets();
-
-                            delegate.loadScriptFromAssets(assetManager, "assets://preload.js", true);
-
-                            String assetUrl = "assets://" + getBundleAssetName();
-                            delegate.loadScriptFromAssets(assetManager, assetUrl, false);
-                            return assetUrl;
-                        }
-                    });
-
-                    ReactInstanceManager reactInstanceManager = builder.build();
-                    ReactMarker.logMarker(ReactMarkerConstants.BUILD_REACT_INSTANCE_MANAGER_END);
-                    return reactInstanceManager;
+                                    String assetUrl = "assets://" + getBundleAssetName();
+                                    delegate.loadScriptFromAssets(assetManager, assetUrl, false);
+                                    return assetUrl;
+                                }
+                            },
+                            getJSMainModuleName(),
+                            getPackages(),
+                            getUseDeveloperSupport(),
+                            null,
+                            LifecycleState.BEFORE_CREATE,
+                            getUIImplementationProvider(),
+                            null,
+                            null,
+                            false,
+                            null,
+                            -1,
+                            -1,
+                            getJSIModulePackage(),
+                            null
+                    );
                 }
             };
 
@@ -94,6 +94,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        FLog.setMinimumLoggingLevel(Log.VERBOSE);
         SoLoader.init(this, false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         PrinterHolder.setPrinter(new Printer() {
