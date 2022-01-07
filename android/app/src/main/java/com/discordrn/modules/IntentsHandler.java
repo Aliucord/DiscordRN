@@ -27,4 +27,9 @@ public class IntentsHandler extends ReactContextBaseJavaModule {
         intent.putString("guildId", null);
         p.resolve(intent);
     }
+
+    @ReactMethod
+    public void getConversationSuggestionsEnabled(Promise p) {
+        p.resolve(false);
+    }
 }
