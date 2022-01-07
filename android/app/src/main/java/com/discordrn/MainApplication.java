@@ -78,7 +78,7 @@ public class MainApplication extends Application implements ReactApplication {
                             null,
                             false,
                             null,
-                            -1,
+                            1,
                             -1,
                             getJSIModulePackage(),
                             null
