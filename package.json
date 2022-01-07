@@ -16,8 +16,9 @@
     "@react-native-community/netinfo": "git+https://git.catvibers.me/IHateHermes/react-native-netinfo.git#5.1.0",
     "react": "17.0.1",
     "react-native": "0.64.3",
-    "react-native-gesture-handler": "^2.1.0",
-    "react-native-orientation": "The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete"
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-orientation": "The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete",
+    "react-native-reanimated": "^1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
