@@ -41,6 +41,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new DCDIconManager(reactContext));
         modules.add(new DCDNotificationCategoryUtils(reactContext));
         modules.add(new DCDSafeAreaManager(reactContext));
+        modules.add(new DCDSKAdNetworkManager(reactContext));
         modules.add(new DCDTheme(reactContext));
         modules.add(new DynamicLinkManager(reactContext));
         modules.add(new ExpoRandom(reactContext));
