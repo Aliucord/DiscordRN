@@ -51,6 +51,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new MMKVManager(reactContext, "MMKVManager"));
         modules.add(new NativePermissionManager(reactContext));
         modules.add(new OnePasswordManager(reactContext));
+        modules.add(new ProximitySensorManager(reactContext));
         modules.add(new PushNotificationAndroid(reactContext));
         modules.add(new RNCPushNotificationIOS(reactContext));
         modules.add(new RNSentryModule(reactContext));
