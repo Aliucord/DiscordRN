@@ -18,8 +18,10 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.JSBundleLoaderDelegate;
+import com.facebook.react.bridge.JSIModulePackage;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.soloader.SoLoader;
+import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -37,6 +39,11 @@ public class MainApplication extends Application implements ReactApplication {
                     List<ReactPackage> packages = new PackageList(this).getPackages();
                     packages.add(new MainAppPackage());
                     return packages;
+                }
+
+                @Override
+                protected JSIModulePackage getJSIModulePackage() {
+                    return new ReanimatedJSIModulePackage();
                 }
 
                 @Override
