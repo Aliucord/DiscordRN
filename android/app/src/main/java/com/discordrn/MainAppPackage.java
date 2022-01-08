@@ -31,6 +31,7 @@ public class MainAppPackage implements ReactPackage {
         List<NativeModule> modules = new ArrayList<>();
 
         modules.add(new BundleUpdaterManager(reactContext));
+        modules.add(new CaptchaManager(reactContext));
         modules.add(new DCDColor(reactContext));
         modules.add(new DCDCrashlyticsCrashReports(reactContext));
         modules.add(new DCDDeviceManager(reactContext));

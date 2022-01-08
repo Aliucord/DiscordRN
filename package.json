@@ -21,7 +21,8 @@
     "react-native-orientation": "The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete",
     "react-native-reanimated": "^1.13",
     "react-native-safe-area-context": "^3.3.2",
-    "react-native-screens": "^3.10.1"
+    "react-native-screens": "^3.10.1",
+    "react-native-webview": "^11.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
