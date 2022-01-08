@@ -29,7 +29,7 @@ globalThis = new Proxy(
                                     const prefix = `[${name}] `;
                                     logger.log = (s) => console.log(prefix + s);
                                     logger.warn = (s) => console.warn(prefix + s);
-                                    logger.error = (s) => console.error(prefix + s);
+                                    logger.error = (s) => console.error(prefix + (s && s.stack ? s.stack : s));
                                     logger.trace = (s) => console.log(prefix + s);
                                     logger.verbose = (s) => console.log(prefix + s);
                                     return logger;
