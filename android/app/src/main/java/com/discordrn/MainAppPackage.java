@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainAppPackage implements ReactPackage {
+    @SuppressWarnings("rawtypes")
     @NonNull
     @Override
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
@@ -30,6 +31,7 @@ public class MainAppPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
+        modules.add(new BrowserManager(reactContext));
         modules.add(new BundleUpdaterManager(reactContext));
         modules.add(new CaptchaManager(reactContext));
         modules.add(new DCDColor(reactContext));
