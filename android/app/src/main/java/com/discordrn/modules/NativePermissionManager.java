@@ -2,6 +2,7 @@ package com.discordrn.modules;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -60,5 +61,10 @@ public class NativePermissionManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public boolean hasPermissionLookup() {
         return true;
+    }
+
+    @ReactMethod
+    public void getNotificationAuthorizationStatus(Promise promise) {
+        promise.resolve(false);
     }
 }
