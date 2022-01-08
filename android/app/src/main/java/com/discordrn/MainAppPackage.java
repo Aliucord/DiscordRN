@@ -18,10 +18,9 @@ public class MainAppPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
         List<ViewManager> views = new ArrayList<>();
 
-        views.add(new DCDSafeArea());
+        views.add(new ViewStub("DCDSafeArea"));
         views.add(new ViewStub("KeyCommandsView"));
         views.add(new ViewStub("RNSSearchBar"));
-        views.add(new ViewStub("RNCSafeAreaProvider"));
 
         return views;
     }

@@ -1,15 +1,14 @@
 package com.discordrn.views;
 
 import android.annotation.SuppressLint;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 
-public class ViewStub extends ViewGroupManager<LinearLayout> {
+public class ViewStub extends ViewGroupManager<FrameLayout> {
     private final String name;
 
     public ViewStub(String name) {
@@ -25,14 +24,7 @@ public class ViewStub extends ViewGroupManager<LinearLayout> {
     @SuppressLint("SetTextI18n")
     @NonNull
     @Override
-    public LinearLayout createViewInstance(@NonNull ThemedReactContext context) {
-        LinearLayout layout = new LinearLayout(context);
-
-        TextView text = new TextView(context);
-        text.setText(name + " stub");
-
-        layout.addView(text);
-
-        return layout;
+    public FrameLayout createViewInstance(@NonNull ThemedReactContext context) {
+        return new FrameLayout(context);
     }
 }
