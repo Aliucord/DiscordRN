@@ -19,8 +19,8 @@ public class MainAppPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
         List<ViewManager> views = new ArrayList<>();
 
+        views.add(new DCDSegmentedControl());
         views.add(new ViewStub("DCDSafeArea"));
-        views.add(new ViewStub("DCDSegmentedControl"));
         views.add(new ViewStub("KeyCommandsView")); // https://github.com/envoy/react-native-key-commands, ios only
 
         return views;
