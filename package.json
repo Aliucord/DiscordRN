@@ -19,7 +19,8 @@
     "react-native-adjust": "^4.29.5",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-orientation": "The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete",
-    "react-native-reanimated": "^1.13"
+    "react-native-reanimated": "^1.13",
+    "react-native-screens": "^3.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
