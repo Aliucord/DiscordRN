@@ -47,7 +47,7 @@ globalThis = new Proxy(
                                     _then.apply(this, [() => { isDone = true }, () => { isDone = true }]);
                                     return _then.apply(this, [onFulfilled, reason => {
                                         isDone = true;
-                                        console[onRejected ? "warn" : "error"]("Promise errored: " + reason.stack)
+                                        console[onRejected ? "warn" : "error"]("Promise errored: " + reason ? (reason.stack ? reason.stack : reason) : new Error().stack)
                                         if (onRejected) {
                                             onRejected(reason);
                                         }
