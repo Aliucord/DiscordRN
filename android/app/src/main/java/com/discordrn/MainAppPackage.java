@@ -58,6 +58,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new ScreenshotHelper(reactContext));
         modules.add(new TimersModule(reactContext));
         modules.add(new TTIManager(reactContext));
+        modules.add(new UserSearchWorkerManager(reactContext));
         modules.add(new VoiceEngine(reactContext));
 
         return modules;
