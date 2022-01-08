@@ -19,8 +19,7 @@ public class MainAppPackage implements ReactPackage {
         List<ViewManager> views = new ArrayList<>();
 
         views.add(new ViewStub("DCDSafeArea"));
-        views.add(new ViewStub("KeyCommandsView"));
-        views.add(new ViewStub("RNSSearchBar"));
+        views.add(new ViewStub("KeyCommandsView")); // https://github.com/envoy/react-native-key-commands, ios only
 
         return views;
     }
