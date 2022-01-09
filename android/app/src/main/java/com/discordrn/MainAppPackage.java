@@ -39,6 +39,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new CaptchaManager(reactContext));
         modules.add(new DCDChatInputManager(reactContext));
         modules.add(new DCDColor(reactContext));
+        modules.add(new DCDCompressionManager(reactContext));
         modules.add(new DCDCrashlyticsCrashReports(reactContext));
         modules.add(new DCDDeviceManager(reactContext));
         modules.add(new DCDFastConnectManager(reactContext));
