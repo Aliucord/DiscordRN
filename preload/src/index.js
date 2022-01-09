@@ -6,6 +6,7 @@ const promiseId = 111;
 const nativeModulesId = 41;
 const localForageId = 892;
 const setUpBatchedBridgeId = 152;
+const exceptionsManagerId = 99;
 
 const appStateId = 415;
 const viewConfigId = 183;
@@ -17,7 +18,7 @@ globalThis = new Proxy(
         set: function (obj, prop, value) {
             if (prop === "__d") {
                 obj[prop] = function (factory, moduleId, dependencyMap) {
-                    if (moduleId === loggerId || moduleId == promiseId || moduleId == localForageId || moduleId == setUpBatchedBridgeId) {
+                    if (moduleId === loggerId || moduleId == promiseId || moduleId == localForageId || moduleId == setUpBatchedBridgeId || moduleId == exceptionsManagerId) {
                         const _factory = factory;
                         factory = function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
                             const ret = _factory(global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap);
@@ -94,6 +95,14 @@ globalThis = new Proxy(
 
                                 const { NativeAppEventEmitter } = _$$_REQUIRE(17);
                                 NativeAppEventEmitter.addListener("RCTDevMenuShown", setUpReactDevTools);
+                            } else if (moduleId == exceptionsManagerId) {
+                                module.exports.handleException = (e, isFatal) => {
+                                    if (e instanceof Error) {
+                                        console.error(e.stack);
+                                    } else {
+                                        console.error(e);
+                                    }
+                                };
                             }
 
                             return ret;
