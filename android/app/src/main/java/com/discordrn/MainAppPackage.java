@@ -21,6 +21,9 @@ public class MainAppPackage implements ReactPackage {
 
         views.add(new DCDSegmentedControl());
         views.add(new ViewStub("DCDSafeArea"));
+        views.add(new ViewStub("DCDChatList"));
+        views.add(new ViewStub("DCDChatInput"));
+        views.add(new ViewStub("DCDChat"));
         views.add(new ViewStub("KeyCommandsView")); // https://github.com/envoy/react-native-key-commands, ios only
 
         return views;
@@ -34,6 +37,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new BrowserManager(reactContext));
         modules.add(new BundleUpdaterManager(reactContext));
         modules.add(new CaptchaManager(reactContext));
+        modules.add(new DCDChatInputManager(reactContext));
         modules.add(new DCDColor(reactContext));
         modules.add(new DCDCrashlyticsCrashReports(reactContext));
         modules.add(new DCDDeviceManager(reactContext));
@@ -49,6 +53,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new IntentsHandler(reactContext));
         modules.add(new KeyboardManager(reactContext));
         modules.add(new KeyCommandsModule(reactContext));
+        modules.add(new MediaManager(reactContext));
         modules.add(new MMKVManager(reactContext, "DCDStrongboxManager"));
         modules.add(new MMKVManager(reactContext, "MMKVManager"));
         modules.add(new NativePermissionManager(reactContext));
