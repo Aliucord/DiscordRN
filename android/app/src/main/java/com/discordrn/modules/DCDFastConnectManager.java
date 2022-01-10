@@ -51,7 +51,8 @@ public class DCDFastConnectManager extends ReactContextBaseJavaModule {
     @Override
     public Map<String, Object> getConstants() {
         final Map<String, Object> constants = new HashMap<>();
-        constants.put("token", prefs.getString("token", null));
+        String token = prefs.getString("token", null);
+        constants.put("token", token == null ? null : token.substring(1, token.length() - 1));
         constants.put("clientState", prefs.getString("clientState", null));
         return constants;
     }

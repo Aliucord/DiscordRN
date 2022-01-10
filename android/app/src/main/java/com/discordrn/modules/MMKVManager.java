@@ -28,8 +28,7 @@ public class MMKVManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setItem(String key, String value, Promise promise) {
         Log.i(TAG, String.format("setItem: %s = %s", key, value));
-        prefs.edit().putString(key, value.startsWith("\"") ?
-            value.substring(1, value.length() - 1) : value).apply();
+        prefs.edit().putString(key, value).apply();
         promise.resolve(true);
     }
 
