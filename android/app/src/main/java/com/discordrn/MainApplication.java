@@ -105,14 +105,21 @@ public class MainApplication extends Application implements ReactApplication {
         SoLoader.init(this, false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
         PrinterHolder.setPrinter(new Printer() {
+            private void log(String message) {
+                if (message.contains("ReanimatedModule") || message.contains("NativeAnimatedModule"))
+                    return;
+
+                Log.v("Printer", message);
+            }
+
             @Override
             public void logMessage(DebugOverlayTag tag, String message, Object... args) {
-                Log.v("Printer", String.format("[%s] %s", tag.name, String.format(message, args)));
+                log(String.format("[%s] %s", tag.name, String.format(message, args)));
             }
 
             @Override
             public void logMessage(DebugOverlayTag tag, String message) {
-                Log.v("Printer", String.format("[%s] %s", tag.name, message));
+                log(String.format("[%s] %s", tag.name, message));
             }
 
             @Override
