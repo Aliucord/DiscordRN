@@ -35,6 +35,7 @@ public class MainAppPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
+        modules.add(new ActionSheetAndroid(reactContext));
         modules.add(new BrowserManager(reactContext));
         modules.add(new BundleUpdaterManager(reactContext));
         modules.add(new CaptchaManager(reactContext));
