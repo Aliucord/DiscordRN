@@ -54,6 +54,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new IntentsHandler(reactContext));
         modules.add(new KeyboardManager(reactContext));
         modules.add(new KeyCommandsModule(reactContext));
+        modules.add(new LocalizationManager(reactContext));
         modules.add(new MediaManager(reactContext));
         modules.add(new MMKVManager(reactContext, "DCDStrongboxManager"));
         modules.add(new MMKVManager(reactContext, "MMKVManager"));
