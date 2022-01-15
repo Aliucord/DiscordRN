@@ -38,6 +38,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new BundleUpdaterManager(reactContext));
         modules.add(new CaptchaManager(reactContext));
         modules.add(new DCDChatInputManager(reactContext));
+        modules.add(new DCDChatManager(reactContext));
         modules.add(new DCDColor(reactContext));
         modules.add(new DCDCompressionManager(reactContext));
         modules.add(new DCDCrashlyticsCrashReports(reactContext));
@@ -50,6 +51,7 @@ public class MainAppPackage implements ReactPackage {
         modules.add(new DCDTheme(reactContext));
         modules.add(new DynamicLinkManager(reactContext));
         modules.add(new ExpoRandom(reactContext));
+        modules.add(new ImageManager(reactContext));
         modules.add(new InfoDictionaryManager(reactContext));
         modules.add(new IntentsHandler(reactContext));
         modules.add(new KeyboardManager(reactContext));
