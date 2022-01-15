@@ -92,7 +92,7 @@ public class VoiceEngine extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setEmitVADLevel(int level) {
+    public void setEmitVADLevel(boolean a, boolean b, ReadableMap c) {
     }
 
     @Override
