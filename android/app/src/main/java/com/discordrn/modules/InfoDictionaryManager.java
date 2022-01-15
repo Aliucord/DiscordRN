@@ -25,6 +25,10 @@ public class InfoDictionaryManager extends ReactContextBaseJavaModule {
         constants.put("SentryDsn", "");
         constants.put("UserSettings", "{\"systemTheme\": \"DARK\", \"useSystemTheme\": true}");
         constants.put("Manifest", "[]");
+
+        constants.put("Version", "90.0");
+        constants.put("Build", "90000");
+        constants.put("ReleaseChannel", "stable");
         return constants;
     }
 }
