@@ -19,6 +19,7 @@
     "react-native": "0.64.3",
     "react-native-adjust": "^4.29.5",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-orientation": "The1Central/react-native-orientation#feature/upgrade-android-version-fix-compile-obsolete",
     "react-native-reanimated": "2.2.4",
     "react-native-safe-area-context": "^3.3.2",
