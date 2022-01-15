@@ -36,24 +36,26 @@ globalThis = new Proxy(
                                     return logger;
                                 }
                             } else if (moduleId == promiseId) {
-                                const _then = module.exports.prototype.then;
-                                module.exports.prototype.then = function (onFulfilled, onRejected) {
-                                    let isDone = false;
-                                    const stack = (new Error("PROMISE TIMEOUT")).stack;
-                                    setTimeout(() => {
-                                        if (!isDone) {
-                                            console.log(stack);
+                                module.exports = new Proxy(module.exports, {
+                                    construct: function (target, argumentsList, newTarget) {
+                                        const promise = new target(...argumentsList);
+
+                                        if (argumentsList.length > 0 && argumentsList[0] !== Promise._0) {
+                                            const stack = new Error("Promise not resolved after 10 seconds").stack;
+                                            setTimeout(() => {
+                                                if (promise._V === 0) {
+                                                    console.warn(stack);
+                                                }
+                                            }, 10000);
                                         }
-                                    }, 10000);
-                                    _then.apply(this, [() => { isDone = true }, () => { isDone = true }]);
-                                    return _then.apply(this, [onFulfilled, reason => {
-                                        isDone = true;
-                                        console[onRejected ? "warn" : "error"]("Promise errored: " + reason ? (reason.stack ? reason.stack : reason) : new Error().stack)
-                                        if (onRejected) {
-                                            onRejected(reason);
-                                        }
-                                    }]);
-                                }
+
+                                        return promise;
+                                    }
+                                });
+
+                                module.exports._Z = (promise, error) => {
+                                    console[error instanceof Error ? "error" : "warn"](`Promise rejection (_deferredState: ${promise._U})\n` + (error instanceof Error ? error.stack : new Error(typeof error === "object" ? JSON.stringify(error) : error).stack));
+                                };
                             } else if (moduleId == localForageId) {
                                 driver.AsyncStorage = _$$_REQUIRE(nativeModulesId).RNC_AsyncSQLiteDBStorage;
                                 const _driver = driver.driverWithoutSerialization();
