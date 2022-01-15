@@ -20,4 +20,12 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void updateRows(int id, String json, boolean b) {
     }
+
+    @ReactMethod
+    public void clearRows(int id) {
+    }
+
+    @ReactMethod
+    public void scrollTo(int id, int message, boolean instant) {
+    }
 }
