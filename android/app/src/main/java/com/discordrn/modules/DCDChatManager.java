@@ -28,4 +28,13 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void scrollTo(int id, int message, boolean instant) {
     }
+
+    @ReactMethod
+    public void fadeIn(int id) {}
+
+    @ReactMethod
+    public void scrollToBottom(int id, boolean b) {}
+
+    @ReactMethod
+    public void scrollToTop(int id, boolean b) {}
 }
