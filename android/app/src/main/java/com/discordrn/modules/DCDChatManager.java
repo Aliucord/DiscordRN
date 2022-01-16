@@ -35,7 +35,6 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void updateRows(int id, String json, boolean b) {
         Objects.requireNonNull(getReactApplicationContext().getCurrentActivity()).runOnUiThread(() -> {
-            // FIXME: doesn't work for some reason
             UIManagerModule managerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
             assert managerModule != null;
             LinearLayout layout = (LinearLayout) managerModule.resolveView(id);
