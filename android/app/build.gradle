@@ -146,7 +146,7 @@ task downloadAssets {
         json.hashes.entrySet().parallelStream().forEach { entry ->
             def path = entry.key
             def hash = entry.value
-            def file = new File(path.substring(4).replace("index.android.bundle", "discord.android.bundle"))
+            def file = new File(projectDir, path.substring(4).replace("index.android.bundle", "discord.android.bundle"))
 
             if (!file.exists()) {
                 file.parentFile.mkdirs()
