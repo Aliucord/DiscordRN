@@ -36,7 +36,7 @@ public class DCDChatList extends SimpleViewManager<RecyclerView> {
         @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.textView.setText("aaaaaaaaaaaaaaaaaaaa " + position + " " + data.get(position));
+            holder.textView.setText(data.get(position));
         }
 
         @Override
