@@ -23,8 +23,8 @@ public class MainAppPackage implements ReactPackage {
         views.add(new ViewStub("DCDSafeArea"));
         // views.add(new ViewStub("DCDChatList"));
         views.add(new DCDChatList());
+        views.add(new DCDChat());
         views.add(new ViewStub("DCDChatInput"));
-        views.add(new ViewStub("DCDChat"));
         views.add(new ViewStub("ChannelSpine"));
         views.add(new ViewStub("KeyCommandsView")); // https://github.com/envoy/react-native-key-commands, ios only
         views.add(new NativeLottieNode());

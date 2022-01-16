@@ -8,7 +8,7 @@ public final class Message {
     public String avatarURL;
     public String channelId;
     public int colorString;
-    public int constrainedWidth;
+    public double constrainedWidth;
     public List<MessageContent> content;
     public String edited;
     public int editedColor;
@@ -28,7 +28,8 @@ public final class Message {
     public String tagText;
     public boolean tagVerified;
     public String timestamp;
-    public int timestampColor;
+    // either a boolean or an int
+    // public boolean timestampColor;
     public int type;
     public String username;
 }

@@ -1,5 +1,6 @@
 package com.discordrn.views;
 
+import android.annotation.SuppressLint;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -32,9 +33,10 @@ public class DCDChatList extends SimpleViewManager<RecyclerView> {
             return new ViewHolder(new TextView(parent.getContext()));
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.textView.setText(data.get(position));
+            holder.textView.setText("aaaaaaaaaaaaaaaaaaaa " + position + " " + data.get(position));
         }
 
         @Override

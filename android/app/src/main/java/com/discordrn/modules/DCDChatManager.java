@@ -1,6 +1,7 @@
 package com.discordrn.modules;
 
-import android.widget.FrameLayout;
+import android.annotation.SuppressLint;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Objects;
 
 public class DCDChatManager extends ReactContextBaseJavaModule {
     private static final Gson gson = new Gson();
@@ -29,16 +31,23 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
         return "DCDChatManager";
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @ReactMethod
     public void updateRows(int id, String json, boolean b) {
-        // FIXME: doesn't work for some reason
-        UIManagerModule managerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
-        RecyclerView chatList = (RecyclerView) ((FrameLayout) managerModule.resolveView(id)).getChildAt(0);
-        DCDChatList.Adapter adapter = (DCDChatList.Adapter) chatList.getAdapter();
+        Objects.requireNonNull(getReactApplicationContext().getCurrentActivity()).runOnUiThread(() -> {
+            // FIXME: doesn't work for some reason
+            UIManagerModule managerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
+            assert managerModule != null;
+            LinearLayout layout = (LinearLayout) managerModule.resolveView(id);
+            RecyclerView chatList = (RecyclerView) layout.getChildAt(0);
+            DCDChatList.Adapter adapter = (DCDChatList.Adapter) chatList.getAdapter();
 
-        List<Row> rows = gson.fromJson(json, rowsType);
-        for (Row row : rows) adapter.data.add(row.message.content.toString());
-        adapter.notifyDataSetChanged();
+            List<Row> rows = gson.fromJson(json, rowsType);
+            assert adapter != null;
+            for (Row row : rows) adapter.data.add(row.message.content.toString());
+            adapter.notifyDataSetChanged();
+        });
+
     }
 
     @ReactMethod
