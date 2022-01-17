@@ -21,6 +21,9 @@ public abstract class MessageContent {
     public static class Mention extends MessageContent {
         public String userId;
         public String channelId;
+        public String roleId;
+        public Integer color;
+        public String colorString;
         public List<MessageContent> content;
     }
 
