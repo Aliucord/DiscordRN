@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "pnpm --prefix preload i",
     "preload": "pnpm --prefix preload build",
-    "android": "pnpm run preload && react-native run-android",
+    "android": "pnpm run preload && react-native run-android --no-jetifier --no-packager",
     "android-release": "pnpm run android -- --variant=release",
     "start": "react-native start"
   },
