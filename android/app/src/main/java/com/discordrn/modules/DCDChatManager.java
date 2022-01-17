@@ -1,6 +1,8 @@
 package com.discordrn.modules;
 
 import android.annotation.SuppressLint;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -71,22 +73,16 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
             List<Row> rows = gson.fromJson(json, rowsType);
             assert adapter != null;
             for (Row row : rows) {
-                if (row.message == null || row.message.content == null)
-                    continue;
-
-                for (MessageContent content : row.message.content) {
-                    if (content instanceof MessageContent.Text) {
-                        adapter.data.add(((MessageContent.Text) content).content);
-                    }
-                }
+                if (row.message != null) adapter.data.add(row.message);
             }
             adapter.notifyDataSetChanged();
         });
-
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @ReactMethod
     public void clearRows(int id) {
+
     }
 
     @ReactMethod
@@ -94,7 +90,18 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void fadeIn(int id) {}
+    public void fadeIn(int id) {
+        Objects.requireNonNull(getReactApplicationContext().getCurrentActivity()).runOnUiThread(() -> {
+            UIManagerModule managerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
+            assert managerModule != null;
+            LinearLayout layout = (LinearLayout) managerModule.resolveView(id);
+            AlphaAnimation anim = new AlphaAnimation(1.0f, 0.0f);
+            anim.setDuration(300);
+            anim.setRepeatCount(1);
+            anim.setRepeatMode(Animation.REVERSE);
+            layout.startAnimation(anim);
+        });
+    }
 
     @ReactMethod
     public void scrollToBottom(int id, boolean b) {}
