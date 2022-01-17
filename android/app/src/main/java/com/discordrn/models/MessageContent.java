@@ -65,4 +65,15 @@ public abstract class MessageContent {
     public static class InlineCode extends MessageContent {
         public String content;
     }
+
+    public static class Spoiler extends MessageContent {
+        public List<MessageContent> content;
+        public String channelId;
+    }
+
+    public static class Timestamp extends MessageContent {
+        public String timestamp;
+        public String full;
+        public String formatted;
+    }
 }
