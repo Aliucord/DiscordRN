@@ -5,13 +5,33 @@ on: [ push, pull_request ]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: reactnativecommunity/react-native-android
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Cache discord assets
+        uses: actions/cache@v2
+        with:
+          path: |
+            android/app/src/main/assets/discord.android.bundle
+            android/app/src/main/res
+            !android/app/src/main/res/values/colors.xml
+            !android/app/src/main/res/values/styles.xml
+          key: ${{ runner.os }}-assets
+
       - uses: pnpm/action-setup@v2
         with:
           version: latest
-      - run: pnpm i --unsafe-perm && pnpm preload && cd android && chmod +x gradlew && ./gradlew assembleDebug --stacktrace
+
+      - run: pnpm i --unsafe-perm && pnpm preload && cd android && chmod +x gradlew && ./gradlew assembleDebug --stacktrace --no-daemon
+
       - uses: actions/upload-artifact@v2
         with:
           name: apk
