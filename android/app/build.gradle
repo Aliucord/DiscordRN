@@ -111,6 +111,7 @@ dependencies {
     implementation 'com.github.khoyron:Actionsheet-android:4'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'org.danilopianini:gson-extras:0.4.0'
 }
 
 // Run this once to be able to run the application with BUCK
