@@ -6,7 +6,7 @@ specifiers:
   '@react-native-async-storage/async-storage': ^1.15.14
   '@react-native-clipboard/clipboard': ^1.8.5
   '@react-native-community/cli-platform-android': ^6.3.0
-  '@react-native-community/netinfo': git+https://git.catvibers.me/IHateHermes/react-native-netinfo.git#5.1.0
+  '@react-native-community/netinfo': Aliucord/react-native-netinfo#5.1.0
   '@react-native-community/slider': ^4.1.12
   eslint: 7.14.0
   hermes-engine: 0.7.2
@@ -29,7 +29,7 @@ dependencies:
   '@react-native-async-storage/async-storage': 1.15.15_react-native@0.64.3
   '@react-native-clipboard/clipboard': 1.8.5_react-native@0.64.3+react@17.0.1
   '@react-native-community/cli-platform-android': 6.3.0
-  '@react-native-community/netinfo': git.catvibers.me/IHateHermes/react-native-netinfo/5f904983545a954ad8de41308232da3c323a41b5_react-native@0.64.3
+  '@react-native-community/netinfo': github.com/Aliucord/react-native-netinfo/f76d2ed7fc7223f61db28fd62610c9bbfba2be94_react-native@0.64.3
   '@react-native-community/slider': 4.1.12_react-native@0.64.3+react@17.0.1
   react: 17.0.1
   react-native: 0.64.3_react@17.0.1
@@ -4937,9 +4937,9 @@ packages:
       yargs-parser: 18.1.3
     dev: false
 
-  git.catvibers.me/IHateHermes/react-native-netinfo/5f904983545a954ad8de41308232da3c323a41b5_react-native@0.64.3:
-    resolution: {commit: 5f904983545a954ad8de41308232da3c323a41b5, repo: https://git.catvibers.me/IHateHermes/react-native-netinfo.git, type: git}
-    id: git.catvibers.me/IHateHermes/react-native-netinfo/5f904983545a954ad8de41308232da3c323a41b5
+  github.com/Aliucord/react-native-netinfo/f76d2ed7fc7223f61db28fd62610c9bbfba2be94_react-native@0.64.3:
+    resolution: {tarball: https://codeload.github.com/Aliucord/react-native-netinfo/tar.gz/f76d2ed7fc7223f61db28fd62610c9bbfba2be94}
+    id: github.com/Aliucord/react-native-netinfo/f76d2ed7fc7223f61db28fd62610c9bbfba2be94
     name: '@react-native-community/netinfo'
     version: 5.1.0
     prepare: true
