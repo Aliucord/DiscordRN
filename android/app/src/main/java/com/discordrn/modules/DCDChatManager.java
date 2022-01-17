@@ -32,9 +32,13 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
         contentFactory.registerSubtype(MessageContent.Link.class, "link");
         contentFactory.registerSubtype(MessageContent.CodeBlock.class, "codeBlock");
         contentFactory.registerSubtype(MessageContent.Mention.class, "mention");
+        contentFactory.registerSubtype(MessageContent.Channel.class, "channel");
+        contentFactory.registerSubtype(MessageContent.Emoji.class, "emoji");
         contentFactory.registerSubtype(MessageContent.CustomEmoji.class, "customEmoji");
         contentFactory.registerSubtype(MessageContent.Strong.class, "strong");
-        contentFactory.registerSubtype(MessageContent.Em.class, "em");
+        contentFactory.registerSubtype(MessageContent.Emphasis.class, "em");
+        contentFactory.registerSubtype(MessageContent.Stroke.class, "s");
+        contentFactory.registerSubtype(MessageContent.Underlined.class, "u");
         contentFactory.registerSubtype(MessageContent.InlineCode.class, "inlineCode");
 
         gson = new GsonBuilder()

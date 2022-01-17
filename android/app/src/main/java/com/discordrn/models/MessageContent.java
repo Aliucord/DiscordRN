@@ -24,6 +24,17 @@ public abstract class MessageContent {
         public List<MessageContent> content;
     }
 
+    public static class Channel extends MessageContent {
+        public String channelId;
+        public String guildId;
+        public List<MessageContent> content;
+    }
+
+    public static class Emoji extends MessageContent {
+        public String content;
+        public String surrogate;
+    }
+
     public static class CustomEmoji extends MessageContent {
         public String id;
         public String alt;
@@ -36,7 +47,15 @@ public abstract class MessageContent {
         public List<MessageContent> content;
     }
 
-    public static class Em extends MessageContent {
+    public static class Emphasis extends MessageContent {
+        public List<MessageContent> content;
+    }
+
+    public static class Stroke extends MessageContent {
+        public List<MessageContent> content;
+    }
+
+    public static class Underlined extends MessageContent {
         public List<MessageContent> content;
     }
 
