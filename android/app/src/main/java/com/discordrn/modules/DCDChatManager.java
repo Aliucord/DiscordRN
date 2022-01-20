@@ -6,7 +6,6 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.discordrn.models.MessageContent;
 import com.discordrn.models.Row;
@@ -66,18 +65,11 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     @ReactMethod
     public void updateRows(int id, String json, boolean b) {
         Objects.requireNonNull(getReactApplicationContext().getCurrentActivity()).runOnUiThread(() -> {
-            UIManagerModule managerModule = getReactApplicationContext().getNativeModule(UIManagerModule.class);
-            assert managerModule != null;
-            LinearLayout layout = (LinearLayout) managerModule.resolveView(id);
-            RecyclerView chatList = (RecyclerView) layout.getChildAt(0);
-            DCDChatList.Adapter adapter = (DCDChatList.Adapter) chatList.getAdapter();
-
             List<Row> rows = gson.fromJson(json, rowsType);
-            assert adapter != null;
             for (Row row : rows) {
-                if (row.message != null && row.message.content != null) adapter.data.add(row.message);
+                if (row.message != null && row.message.content != null)
+                    DCDChatList.addMessage(row.message);
             }
-            adapter.notifyDataSetChanged();
         });
     }
 
