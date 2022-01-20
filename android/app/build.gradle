@@ -134,6 +134,10 @@ dependencies {
     implementation "androidx.compose.runtime:runtime:1.1.0-rc01"
     implementation "androidx.compose.ui:ui:1.0.5"
     implementation 'androidx.compose.material:material:1.0.5'
+
+    implementation('com.google.accompanist:accompanist-appcompat-theme:0.22.0-rc') {
+        exclude group: 'androidx.appcompat', module: 'appcompat'
+    }
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
