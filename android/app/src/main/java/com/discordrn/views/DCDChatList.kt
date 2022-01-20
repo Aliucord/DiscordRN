@@ -35,7 +35,12 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
 
         @JvmStatic
         fun addMessage(message: Message) {
-            messages.add(0, message)
+            messages.add(message)
+        }
+
+        @JvmStatic
+        fun clearMessages() {
+            messages.clear()
         }
     }
 
@@ -76,29 +81,36 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.Top
         ) {
-            FrescoImage(
-                imageUrl = message.avatarURL,
-                modifier = Modifier
-                    .size(40.dp)
-                    .clip(CircleShape)
-                    .background(Color.White),
-            )
-            Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .heightIn(min = 40.dp),
-                verticalArrangement = Arrangement.SpaceEvenly,
-            ) {
-                Text(
-                    text = message.username,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colors.primary
+            if (message.avatarURL != null) {
+                FrescoImage(
+                    imageUrl = message.avatarURL,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape),
                 )
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = 40.dp),
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                ) {
+                    Text(
+                        text = message.username,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(message.colorString)
+                    )
+                    Text(
+                        text = messageContentString,
+                        style = MaterialTheme.typography.body2,
+                        color = Color.White
+                    )
+                }
+            } else {
                 Text(
                     text = messageContentString,
                     style = MaterialTheme.typography.body2,
-                    color = MaterialTheme.colors.primary
+                    color = Color.White
                 )
             }
         }
@@ -117,18 +129,22 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                     }
                 }
                 is MessageContent.CodeBlock -> {
-                    withStyle(SpanStyle(
-                        color = Color.LightGray,
-                        background = Color.DarkGray
-                    )) {
+                    withStyle(
+                        SpanStyle(
+                            color = Color.LightGray,
+                            background = Color.DarkGray
+                        )
+                    ) {
                         append(content.content)
                     }
                 }
                 is MessageContent.Mention -> {
-                    withStyle(SpanStyle(
-                        color = MaterialTheme.colors.blurple,
-                        background = MaterialTheme.colors.blurpleBackground
-                    )) {
+                    withStyle(
+                        SpanStyle(
+                            color = MaterialTheme.colors.blurple,
+                            background = MaterialTheme.colors.blurpleBackground
+                        )
+                    ) {
                         append('@')
                         append(content.userId)
                     }
@@ -140,10 +156,12 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                     append(':')
                 }
                 is MessageContent.Channel -> {
-                    withStyle(SpanStyle(
-                        color = MaterialTheme.colors.blurple,
-                        background = MaterialTheme.colors.blurpleBackground
-                    )) {
+                    withStyle(
+                        SpanStyle(
+                            color = MaterialTheme.colors.blurple,
+                            background = MaterialTheme.colors.blurpleBackground
+                        )
+                    ) {
                         append('#')
                         append(content.channelId)
                     }
@@ -153,7 +171,7 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                         append(parseMessageContentToSpan(content.content))
                     }
                 }
-                is MessageContent.Emphasis ->  {
+                is MessageContent.Emphasis -> {
                     withStyle(SpanStyle(fontStyle = FontStyle.Italic)) {
                         append(parseMessageContentToSpan(content.content))
                     }
@@ -169,10 +187,12 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                     }
                 }
                 is MessageContent.InlineCode -> {
-                    withStyle(SpanStyle(
-                        color = Color.LightGray,
-                        background = Color.DarkGray
-                    )) {
+                    withStyle(
+                        SpanStyle(
+                            color = Color.LightGray,
+                            background = Color.DarkGray
+                        )
+                    ) {
                         append(content.content)
                     }
                 }
@@ -183,10 +203,12 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
         }
     }
 
-    private val Colors.blurple get() =
-        Color(88, 101, 242)
+    private val Colors.blurple
+        get() =
+            Color(88, 101, 242)
 
-    private val Colors.blurpleBackground get() =
-        blurple.copy(alpha = 0.3f)
+    private val Colors.blurpleBackground
+        get() =
+            blurple.copy(alpha = 0.3f)
 
 }

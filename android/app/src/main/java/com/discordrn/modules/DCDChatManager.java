@@ -1,6 +1,5 @@
 package com.discordrn.modules;
 
-import android.annotation.SuppressLint;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
@@ -61,7 +60,6 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
         return "DCDChatManager";
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @ReactMethod
     public void updateRows(int id, String json, boolean b) {
         Objects.requireNonNull(getReactApplicationContext().getCurrentActivity()).runOnUiThread(() -> {
@@ -73,10 +71,9 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
         });
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @ReactMethod
     public void clearRows(int id) {
-
+        DCDChatList.clearMessages();
     }
 
     @ReactMethod
