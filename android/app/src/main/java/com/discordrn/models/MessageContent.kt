@@ -1,87 +1,20 @@
-package com.discordrn.models;
+package com.discordrn.models
 
-import java.util.List;
-
-public abstract class MessageContent {
-    public static class Text extends MessageContent {
-        public String content;
-    }
-
-    public static class Link extends MessageContent {
-        public List<MessageContent> content;
-        public String target;
-    }
-
-    public static class CodeBlock extends MessageContent {
-        public String lang;
-        public String content;
-        public boolean inQuote;
-    }
-
-    public static class Mention extends MessageContent {
-        public String userId;
-        public String channelId;
-        public String roleId;
-        public Integer color;
-        public String colorString;
-        public List<MessageContent> content;
-    }
-
-    public static class Channel extends MessageContent {
-        public String channelId;
-        public String guildId;
-        public List<MessageContent> content;
-    }
-
-    public static class Emoji extends MessageContent {
-        public String content;
-        public String surrogate;
-    }
-
-    public static class CustomEmoji extends MessageContent {
-        public String id;
-        public String alt;
-        public String src;
-        public String frozenSrc;
-        public boolean jumboable;
-    }
-
-    public static class Strong extends MessageContent {
-        public List<MessageContent> content;
-    }
-
-    public static class Emphasis extends MessageContent {
-        public List<MessageContent> content;
-    }
-
-    public static class Stroke extends MessageContent {
-        public List<MessageContent> content;
-    }
-
-    public static class Underlined extends MessageContent {
-        public List<MessageContent> content;
-    }
-
-    public static class InlineCode extends MessageContent {
-        public String content;
-    }
-
-    public static class Spoiler extends MessageContent {
-        public List<MessageContent> content;
-        public String channelId;
-    }
-
-    public static class Timestamp extends MessageContent {
-        public String timestamp;
-        public String full;
-        public String formatted;
-    }
-
-    public static class BlockQuote extends MessageContent {
-        public List<MessageContent> content;
-    }
-
-    public static class Paragraph extends MessageContent {
-        public List<MessageContent> content;
-    }
+sealed class MessageContent {
+    data class Text(val content: String) : MessageContent()
+    data class Link(val target: String, val content: List<MessageContent>) : MessageContent()
+    data class CodeBlock(val lang: String, val inQuote: Boolean, val content: String) : MessageContent()
+    data class Mention(val userId: String, val channelId: String, val roleId: String, val color: Int, val colorString: String, val content: List<MessageContent>) : MessageContent()
+    data class Channel(val channelId: String, val guildId: String, val content: List<MessageContent>) : MessageContent()
+    data class Emoji(val content: String, val surrogate: String) : MessageContent()
+    data class CustomEmoji(val id: String, val alt: String, val src: String, val frozenSrc: String, val jumboable: Boolean) : MessageContent()
+    data class Strong(val content: List<MessageContent>) : MessageContent()
+    data class Emphasis(val content: List<MessageContent>) : MessageContent()
+    data class Stroke(val content: List<MessageContent>) : MessageContent()
+    data class Underlined(val content: List<MessageContent>) : MessageContent()
+    data class InlineCode(val content: String) : MessageContent()
+    data class Spoiler(val channelId: String) : MessageContent()
+    data class Timestamp(val timestamp: String, val full: String, val formatted: String) : MessageContent()
+    data class BlockQuote(val content: List<MessageContent>) : MessageContent()
+    data class Paragraph(val content: List<MessageContent>) : MessageContent()
 }

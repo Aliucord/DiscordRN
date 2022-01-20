@@ -2,6 +2,7 @@ import groovy.json.JsonSlurper
 import java.security.*
 
 apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 project.ext.react = [
         enableHermes: true,  // clean and rebuild if changing
@@ -112,6 +113,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'org.danilopianini:gson-extras:0.4.0'
+
+    implementation "androidx.core:core-ktx:$androidXCore"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 // Run this once to be able to run the application with BUCK

@@ -41,29 +41,29 @@ public class DCDChatList extends SimpleViewManager<RecyclerView> {
             String msgString = "";
             for (MessageContent c : contentList) {
                 if (c instanceof MessageContent.Text)
-                    msgString += ((MessageContent.Text) c).content;
+                    msgString += ((MessageContent.Text) c).getContent();
                 if (c instanceof MessageContent.Link)
-                    msgString += parseMessageContentToString(((MessageContent.Link) c).content);
+                    msgString += parseMessageContentToString(((MessageContent.Link) c).getContent());
                 if (c instanceof MessageContent.CodeBlock)
-                    msgString += "\n```" + ((MessageContent.CodeBlock) c).content + "\n```\n";
+                    msgString += "\n```" + ((MessageContent.CodeBlock) c).getContent() + "\n```\n";
                 if (c instanceof MessageContent.Mention)
-                    msgString += parseMessageContentToString(((MessageContent.Mention) c).content);
+                    msgString += parseMessageContentToString(((MessageContent.Mention) c).getContent());
                 if (c instanceof MessageContent.Emoji)
-                    msgString += ((MessageContent.Emoji) c).content;
+                    msgString += ((MessageContent.Emoji) c).getContent();
                 if (c instanceof MessageContent.CustomEmoji)
-                    msgString += ":" + ((MessageContent.CustomEmoji) c).alt + ":";
+                    msgString += ":" + ((MessageContent.CustomEmoji) c).getAlt() + ":";
                 if (c instanceof MessageContent.Channel)
-                    msgString += "#" + parseMessageContentToString(((MessageContent.Channel) c).content);
+                    msgString += "#" + parseMessageContentToString(((MessageContent.Channel) c).getContent());
                 if (c instanceof MessageContent.Strong)
-                    msgString += "**" + parseMessageContentToString(((MessageContent.Strong) c).content) + "**";
+                    msgString += "**" + parseMessageContentToString(((MessageContent.Strong) c).getContent()) + "**";
                 if (c instanceof MessageContent.Emphasis)
-                    msgString += "*" + parseMessageContentToString(((MessageContent.Emphasis) c).content) + "*";
+                    msgString += "*" + parseMessageContentToString(((MessageContent.Emphasis) c).getContent()) + "*";
                 if (c instanceof MessageContent.Stroke)
-                    msgString += "*" + parseMessageContentToString(((MessageContent.Stroke) c).content) + "*";
+                    msgString += "*" + parseMessageContentToString(((MessageContent.Stroke) c).getContent()) + "*";
                 if (c instanceof MessageContent.Underlined)
-                    msgString += "*" + parseMessageContentToString(((MessageContent.Underlined) c).content) + "*";
+                    msgString += "*" + parseMessageContentToString(((MessageContent.Underlined) c).getContent()) + "*";
                 if (c instanceof MessageContent.InlineCode)
-                    msgString += "``" + ((MessageContent.InlineCode) c).content + "``";
+                    msgString += "``" + ((MessageContent.InlineCode) c).getContent() + "``";
             }
             return msgString;
         }
