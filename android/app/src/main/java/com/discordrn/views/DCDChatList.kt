@@ -88,7 +88,7 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                 verticalArrangement = Arrangement.SpaceEvenly,
             ) {
                 Text(
-                    text = message.authorId,
+                    text = message.username,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colors.primary
