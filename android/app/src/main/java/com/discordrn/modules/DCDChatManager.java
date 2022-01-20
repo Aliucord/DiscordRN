@@ -44,6 +44,8 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
         contentFactory.registerSubtype(MessageContent.InlineCode.class, "inlineCode");
         contentFactory.registerSubtype(MessageContent.Spoiler.class, "spoiler");
         contentFactory.registerSubtype(MessageContent.Timestamp.class, "timestamp");
+        contentFactory.registerSubtype(MessageContent.BlockQuote.class, "blockQuote");
+        contentFactory.registerSubtype(MessageContent.Paragraph.class, "paragraph");
 
         gson = new GsonBuilder()
                 .registerTypeAdapterFactory(contentFactory)
@@ -104,8 +106,10 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void scrollToBottom(int id, boolean b) {}
+    public void scrollToBottom(int id, boolean b) {
+    }
 
     @ReactMethod
-    public void scrollToTop(int id, boolean b) {}
+    public void scrollToTop(int id, boolean b) {
+    }
 }

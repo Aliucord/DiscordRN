@@ -76,4 +76,12 @@ public abstract class MessageContent {
         public String full;
         public String formatted;
     }
+
+    public static class BlockQuote extends MessageContent {
+        public List<MessageContent> content;
+    }
+
+    public static class Paragraph extends MessageContent {
+        public List<MessageContent> content;
+    }
 }
