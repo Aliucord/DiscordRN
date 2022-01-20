@@ -21,7 +21,6 @@ public class MainAppPackage implements ReactPackage {
 
         views.add(new DCDSegmentedControl());
         views.add(new ViewStub("DCDSafeArea"));
-        // views.add(new ViewStub("DCDChatList"));
         views.add(new DCDChatList());
         views.add(new DCDChat());
         views.add(new DCDChatInput());

@@ -2,6 +2,7 @@ import groovy.json.JsonSlurper
 import java.security.*
 
 apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 project.ext.react = [
         enableHermes: true,  // clean and rebuild if changing
@@ -63,6 +64,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
 
     // applicationVariants are e.g. debug, release

@@ -73,7 +73,8 @@ public class DCDChatManager extends ReactContextBaseJavaModule {
             List<Row> rows = gson.fromJson(json, rowsType);
             assert adapter != null;
             for (Row row : rows) {
-                if (row.message != null) adapter.data.add(row.message);
+                if (row.message != null)
+                    adapter.addMessage(row.message);
             }
             adapter.notifyDataSetChanged();
         });
