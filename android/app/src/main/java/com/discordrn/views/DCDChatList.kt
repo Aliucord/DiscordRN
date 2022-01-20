@@ -26,6 +26,7 @@ import com.discordrn.models.MessageContent
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.google.accompanist.appcompattheme.AppCompatTheme
+import com.skydoves.landscapist.fresco.FrescoImage
 
 class DCDChatList : SimpleViewManager<ComposeView>() {
 
@@ -75,7 +76,8 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.Top
         ) {
-            Box(
+            FrescoImage(
+                imageUrl = message.avatarURL,
                 modifier = Modifier
                     .size(40.dp)
                     .clip(CircleShape)

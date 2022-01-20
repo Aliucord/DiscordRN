@@ -138,6 +138,8 @@ dependencies {
     implementation('com.google.accompanist:accompanist-appcompat-theme:0.22.0-rc') {
         exclude group: 'androidx.appcompat', module: 'appcompat'
     }
+
+    implementation "com.github.skydoves:landscapist-fresco:1.4.5"
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
