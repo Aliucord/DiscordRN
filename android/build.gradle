@@ -12,7 +12,7 @@ buildscript {
     }
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.4")
@@ -22,14 +22,35 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
         }
 
         google()
-        jcenter()
-        maven { url 'https://www.jitpack.io' }
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+
+    // Use mavenCentral versions of jcenter libraries
+    configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == "com.facebook.yoga" && details.requested.name == "proguard-annotations") {
+                details.useVersion "1.19.0"
+            }
+
+            if (details.requested.group == "com.facebook.fbjni" && details.requested.name == "fbjni-java-only") {
+                details.useVersion "0.0.4"
+            }
+
+            if (details.requested.group == "com.facebook.fresco") {
+                details.useVersion "2.3.0"
+            }
+
+            // https://github.com/yqritc/Android-ScalableVideoView/issues/52
+            if (details.requested.group == "com.yqritc" && details.requested.name == "android-scalablevideoview") {
+                details.useTarget group: "com.github.MatrixFrog", name: "Android-ScalableVideoView", version: "v1.0.4-jitpack"
+            }
+        }
     }
 }
