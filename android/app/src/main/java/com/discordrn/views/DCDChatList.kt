@@ -15,12 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.discordrn.BuildConfig
+import com.discordrn.R
 import com.discordrn.models.Message
 import com.discordrn.models.MessageContent
 import com.facebook.react.uimanager.SimpleViewManager
@@ -41,6 +44,14 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
         @JvmStatic
         fun clearMessages() {
             messages.clear()
+        }
+
+        fun getDefaultAvatarUri(name: String) = "res:/" + when (name) {
+            "images_ios_avatars_default_avatar_1" -> R.drawable.images_ios_avatars_default_avatar_1
+            "images_ios_avatars_default_avatar_2" -> R.drawable.images_ios_avatars_default_avatar_2
+            "images_ios_avatars_default_avatar_3" -> R.drawable.images_ios_avatars_default_avatar_3
+            "images_ios_avatars_default_avatar_4" -> R.drawable.images_ios_avatars_default_avatar_4
+            else -> R.drawable.images_ios_avatars_default_avatar_0
         }
     }
 
@@ -83,7 +94,8 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
         ) {
             if (message.avatarURL != null) {
                 FrescoImage(
-                    imageUrl = message.avatarURL,
+                    imageUrl = message.avatarURL.run {
+                        if (startsWith("images_")) getDefaultAvatarUri(this) else this },
                     modifier = Modifier
                         .size(40.dp)
                         .clip(CircleShape),
@@ -94,12 +106,20 @@ class DCDChatList : SimpleViewManager<ComposeView>() {
                         .heightIn(min = 40.dp),
                     verticalArrangement = Arrangement.SpaceEvenly,
                 ) {
-                    Text(
-                        text = message.username,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color(message.colorString)
-                    )
+                    Row {
+                        Text(
+                            text = message.username,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color(message.colorString)
+                        )
+                        Text(
+                            text = message.timestamp,
+                            fontSize = 12.sp,
+                            color = Color((message.timestampColor as Double).toInt()),
+                            modifier = Modifier.padding(start = 4.dp)
+                        )
+                    }
                     Text(
                         text = messageContentString,
                         style = MaterialTheme.typography.body2,

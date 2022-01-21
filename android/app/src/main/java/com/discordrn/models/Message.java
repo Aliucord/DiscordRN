@@ -29,7 +29,7 @@ public final class Message {
     public boolean tagVerified;
     public String timestamp;
     // either a boolean or an int
-    // public boolean timestampColor;
+    public Object timestampColor;
     public int type;
     public String username;
 }
