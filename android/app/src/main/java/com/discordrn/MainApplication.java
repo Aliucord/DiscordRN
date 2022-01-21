@@ -104,7 +104,7 @@ public class MainApplication extends Application implements ReactApplication {
         FLog.setMinimumLoggingLevel(Log.VERBOSE);
         SoLoader.init(this, false);
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-        PrinterHolder.setPrinter(new Printer() {
+        if (BuildConfig.PRINTER_LOGS) PrinterHolder.setPrinter(new Printer() {
             private void log(String message) {
                 if (message.contains("ReanimatedModule") || message.contains("NativeAnimatedModule"))
                     return;
